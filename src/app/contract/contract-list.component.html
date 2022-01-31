@@ -1,0 +1,9 @@
+<div class="page-header">
+  <span>Contract</span>
+</div>
+
+<div *ngIf="(contract$ | async)?.length > 0">
+    <ng-container *ngFor="let contract of contract$ | async">
+        <app-contract-details [contract]="contract" (updateContract)="updateContract($event)" (delete)="deleteContract($event)"></app-contract-details>
+    </ng-container>
+</div>

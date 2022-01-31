@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Upload Documents</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <div class="row">
+      <div class="col-4">
+        <label for="documentType">Document Type</label>
+        <select name="documentType" formControlName="documentType" class="form-control">
+          <option [value]="null">Select One</option>
+          <option *ngFor="let option of docTypes" [value]="option.id">
+            {{ option.docName }}
+          </option>
+        </select>
+      </div>
+      <div class="col-4">
+        <label for="effectiveDate">Effective Date</label>
+        <input name="effectiveDate" type="date" class="form-control" formControlName="effectiveDate">
+      </div>
+      <div class="col-4">
+        <label for="expirationDate">
+          <span>Expiration Date</span>
+        </label>
+        <input name="expirationDate" type="text" class="form-control" formControlName="expirationDate">
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-3">
+      <div class="col  upload-section">
+        <input
+          style="display: none"
+          type="file" multiple (change)="onFileChanged($event.target.files)"
+          #fileInput>
+
+        <button class="btn btn-upload" (click)="fileInput.click()">
+          <i class="fa fa-cloud-upload"></i>
+          Click here to upload
+        </button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="uploadedFiles?.length > 0">
+      <div class="col">
+        <app-document-thumbnail [files]="uploadedFiles"></app-document-thumbnail>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button class="btn btn-default" (click)="cancel()">CANCEL</button>
+  <button class="btn btn-primary" (click)="upload()">Upload</button>
+</div>

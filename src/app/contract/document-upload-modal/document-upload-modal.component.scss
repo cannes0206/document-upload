@@ -1,0 +1,53 @@
+
+
+.upload-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-upload {
+  border: 3px dashed;
+  // padding: 10px;
+  border-radius: 5px;
+  display: flex !important;
+  align-items: center;
+  // padding: 10px 40px;
+
+  padding: 10px 50px 10px 30px;
+}
+
+.fa-cloud-upload {
+  font-size: 40px;
+  margin-right: 30px;
+  // margin-left: 20px;
+}
+
+.mat-dialog-title, .mat-dialog-actions button {
+  font-weight: bold !important;
+}
+
+.mat-dialog-content {
+  position: relative;
+}
+
+.col {
+  position: relative;
+}
+
+label {
+  display: block;
+
+  &.floating {
+    position: absolute;
+    bottom: 1.6em;
+    left: 10px;
+    background-color: transparent;
+    padding: 0 .3125em;
+    z-index: 1;
+    line-height: 1.3em;
+
+    .floating-text {
+      background-color: white !important;
+    }
+  }
+}

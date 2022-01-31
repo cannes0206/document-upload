@@ -1,0 +1,33 @@
+<div class="contract-container" [ngClass]="setClass(contract)">
+    <div class="contract-details">
+      <p class="contract-name">{{contract.contractName}}</p>
+      <p class="expiration-date text-muted">{{formatDate(contract.expirationDate)}}</p>
+    </div>
+
+    <div class="contract-files">
+      <ng-container *ngIf="contract.files.length > 0; else noFiles">
+        <p class="file-name" *ngFor="let file of contract.files">
+          {{file.fileName}}
+        </p>
+      </ng-container>
+      <ng-template #noFiles>
+        <strong><p class="file-name text-muted">File Name</p></strong>
+      </ng-template>
+    </div>
+
+    <div class="file-thumbnails"  (click)="openUploadModal()">
+      <app-document-thumbnail *ngIf="contract.files.length > 0" [files]="contract.files"></app-document-thumbnail>
+    </div>
+
+    <div class="actions">
+      <span class="btn"><i class="fa fa-search"></i></span>
+      <span class="btn" (click)="openDeleteModal(contract.contractId)"><i class="fa fa-trash-o"></i></span>
+    </div>
+</div>
+
+<!-- <input
+  style="display: none"
+  type="file" (change)="onFileChanged($event)"
+  #fileInput>
+<button (click)="fileInput.click()">Select File</button>
+<button (click)="onUpload()">Upload!</button> -->

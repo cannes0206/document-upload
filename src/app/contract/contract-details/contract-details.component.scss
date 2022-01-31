@@ -1,0 +1,73 @@
+.contract-container {
+  border-width: 1px 1px 1px 8px;
+  border-style: solid;
+  border-image: initial;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 10px 25px;
+  margin: 5px 0;
+  display: flex;
+
+  &.not-started {
+    border-color: rgb(219, 224, 231) rgb(219, 224, 231) rgb(219, 224, 231) rgb(128,132,132);
+  }
+
+  &.active {
+    border-color: rgb(219, 224, 231) rgb(219, 224, 231) rgb(219, 224, 231) rgb(55, 238, 73);
+  }
+
+  &.expired {
+    border-color: rgb(219, 224, 231) rgb(219, 224, 231) rgb(219, 224, 231) rgb(219, 22, 22);
+  }
+
+  .contract-details {
+    width: 30%;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .expiration-date {
+      font-size: 12px;
+    }
+
+    .contract-name {
+      font-weight: bold;
+    }
+  }
+
+  .contract-files {
+    width: 30%;
+
+    .file-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+  }
+
+  .file-thumbnails {
+    width: 30%;
+    background-color: yellow;
+  }
+
+  .actions {
+    width: 10%;
+    padding: 5px;
+
+    .btn {
+      padding: 5px;
+    }
+
+    .fa-trash-o {
+      color: #FF5C65;
+      font-size: 1.25rem;
+    }
+  }
+
+}
