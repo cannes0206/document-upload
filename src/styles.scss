@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap.scss';
+$fa-font-path: "~font-awesome/fonts";
+
+@import "~font-awesome/scss/font-awesome.scss";
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.page-header {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #042541;
+  font-weight: bold;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #042541;
+}
+
+.btn-default {
+  border: 2px solid #042541;
+  margin-right: 15px;
+}
+
+body { margin: 0; font-family: "Open Sans", sans-serif; }
