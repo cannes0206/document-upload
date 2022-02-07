@@ -1,46 +1,57 @@
 <h2 mat-dialog-title>Upload Documents</h2>
-
 <div mat-dialog-content>
   <form [formGroup]="formGroup">
     <div class="row">
       <div class="col-4">
-        <label for="documentType">Document Type</label>
+        <label class="required" for="documentType">Document Type</label>
         <select name="documentType" formControlName="documentType" class="form-control">
-          <option [value]="null">Select One</option>
-          <option *ngFor="let option of docTypes" [value]="option.id">
-            {{ option.docName }}
+          <option [value]="null" selected>Select One</option>
+          <option *ngFor="let docType of docTypes" [value]="docType">
+            {{ docType }}
           </option>
         </select>
+        <small class="text-danger" *ngIf="formGroup.get('documentType').touched && formGroup.get('documentType').hasError('required')">
+          This field is required
+        </small>
       </div>
       <div class="col-4">
-        <label for="effectiveDate">Effective Date</label>
-        <input name="effectiveDate" type="date" class="form-control" formControlName="effectiveDate">
+        <label class="required" for="effectiveDate">Effective Date</label>
+        <input name="effectiveDate" type="text" [textMask]="{mask: dateMask}" [placeholder]="datePlaceholder" class="form-control" formControlName="effectiveDate">
+        <small class="text-danger" *ngIf="formGroup.get('effectiveDate').touched && formGroup.get('effectiveDate').hasError('required')">
+          This field is required
+        </small>
+        <small class="text-danger" *ngIf="formGroup.get('effectiveDate').touched && formGroup.get('effectiveDate').hasError('pattern')">
+          Please enter a valid date
+        </small>
       </div>
       <div class="col-4">
-        <label for="expirationDate">
-          <span>Expiration Date</span>
-        </label>
-        <input name="expirationDate" type="text" class="form-control" formControlName="expirationDate">
+        <label class="required" for="expirationDate">Expiration Date</label>
+        <input name="expirationDate" type="text" [textMask]="{mask: dateMask}" [placeholder]="datePlaceholder" class="form-control" formControlName="expirationDate">
+        <small class="text-danger" *ngIf="formGroup.get('expirationDate').touched && formGroup.get('expirationDate').hasError('required')">
+          This field is required
+        </small>
+        <small class="text-danger" *ngIf="formGroup.get('expirationDate').touched && formGroup.get('expirationDate').hasError('pattern')">
+          Please enter a valid date
+        </small>
       </div>
     </div>
 
     <div class="row mt-5 mb-3">
-      <div class="col  upload-section">
-        <input
-          style="display: none"
-          type="file" multiple (change)="onFileChanged($event.target.files)"
-          #fileInput>
-
+      <div class="col upload-section">
         <button class="btn btn-upload" (click)="fileInput.click()">
           <i class="fa fa-cloud-upload"></i>
           Click here to upload
         </button>
+        <input
+          #fileInput
+          hidden
+          type="file" (change)="onFileChanged($event.target.files)" accept="image/png, image/jpeg, application/pdf"
+         >
       </div>
     </div>
-
-    <div class="row" *ngIf="uploadedFiles?.length > 0">
+    <div class="row" *ngIf="showThumbnail">
       <div class="col">
-        <app-document-thumbnail [files]="uploadedFiles"></app-document-thumbnail>
+        <app-document-thumbnail [files]="files"></app-document-thumbnail>
       </div>
     </div>
 

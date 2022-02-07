@@ -12,6 +12,7 @@
 
   &.not-started {
     border-color: rgb(219, 224, 231) rgb(219, 224, 231) rgb(219, 224, 231) rgb(128,132,132);
+    background-color: rgb(219, 224, 231);
   }
 
   &.active {
@@ -39,7 +40,7 @@
   }
 
   .contract-files {
-    width: 30%;
+    width: 25%;
 
     .file-name {
       white-space: nowrap;
@@ -52,8 +53,7 @@
   }
 
   .file-thumbnails {
-    width: 30%;
-    background-color: yellow;
+    width: 40%;
   }
 
   .actions {
@@ -68,6 +68,19 @@
       color: #FF5C65;
       font-size: 1.25rem;
     }
+  }
+
+  .btn-upload {
+    border: 3px dashed;
+    border-radius: 5px;
+    display: flex !important;
+    align-items: center;
+    padding: 10px 50px 10px 30px;
+  }
+
+  .fa-cloud-upload {
+    font-size: 30px;
+    margin-right: 20px;
   }
 
 }

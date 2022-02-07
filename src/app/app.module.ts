@@ -11,6 +11,7 @@ import { DocumentUploadModalComponent } from './contract/document-upload-modal/d
 import { DeleteConfirmationModalComponent } from './contract/delete-confirmation-modal/delete-confirmation-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,11 @@ import { SafeUrlPipe } from './shared/pipes/safe-url.pipe';
     SafeUrlPipe
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TextMaskModule
   ],
   providers: [],
   entryComponents: [DocumentUploadModalComponent],

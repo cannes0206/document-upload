@@ -16,6 +16,9 @@ export class ContractDetailsComponent implements OnInit {
   @Output() updateContract: EventEmitter<Contract> = new EventEmitter<Contract>();
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
 
+  public get hasUploaded(): boolean {
+    return this.contract.files.length > 0;
+  }
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -38,11 +41,16 @@ export class ContractDetailsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.hasBackdrop = false;
     dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
 
     this.dialog.open(DocumentUploadModalComponent, dialogConfig).afterClosed().subscribe((data: { formValue: Contract, files: DocumentFile[] }) => {
-      const updatedContract = { ...this.contract, ...data.formValue};
-      updatedContract.files = data.files;
-      this.updateContract.emit(updatedContract);
+      if (data) {
+        const updatedContract = { ...this.contract, ...data?.formValue};
+        if (data.files) {
+          updatedContract.files = data.files;
+        }
+        this.updateContract.emit(updatedContract);
+      }
     });
   }
 

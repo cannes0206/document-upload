@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -6,13 +6,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './delete-confirmation-modal.component.html',
   styleUrls: ['./delete-confirmation-modal.component.scss']
 })
-export class DeleteConfirmationModalComponent implements OnInit {
+export class DeleteConfirmationModalComponent {
 
   constructor(
     private dialogRef: MatDialogRef<DeleteConfirmationModalComponent>) {
-  }
-
-  ngOnInit(): void {
   }
 
   deleteContract(): void {

@@ -1,11 +1,10 @@
-<div class="thumbnail-container">
-  <div class="thumbnail " *ngFor="let preview of previews">
+<div class="thumbnail-container grid">
+  <div class="thumbnail" *ngFor="let preview of previews">
     <ng-container *ngIf="preview.fileType === 'image/jpeg' || preview.fileType === 'image/png'">
-      <img [src]="preview.src | safeUrl" height="100" width="100">
+      <img [src]="preview.src | safeUrl" [height]="height" [width]="width">
     </ng-container>
     <ng-container *ngIf="preview.fileType === 'application/pdf'">
-      <embed [src]="preview.src | safeUrl" height="100" width="100">
+      <embed [src]="preview.src | safeUrl" [height]="height" [width]="width">
     </ng-container>
   </div>
-
 </div>

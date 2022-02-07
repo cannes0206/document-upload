@@ -59,7 +59,6 @@ export class ContractService {
   updateContract(contractToUpdate: ContractUpdateRequest): Observable<string> {
     const toUpdateIndex = this.mockContracts.findIndex(p => p.contractId === contractToUpdate.contractId);
     this.mockContracts[toUpdateIndex] = { ...this.mockContracts[toUpdateIndex], ...contractToUpdate};
-    // this.mockContracts = { ...this.mockContracts, ...contractToUpdate};
     this.getContracts();
 
     return of('Updated Contract');

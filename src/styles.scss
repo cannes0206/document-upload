@@ -30,4 +30,19 @@ $fa-font-path: "~font-awesome/fonts";
   margin-right: 15px;
 }
 
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.required {
+  &::before {
+    content: '* ';
+    color: red;
+  }
+}
+
+.text-danger {
+  color: red;
+}
+
 body { margin: 0; font-family: "Open Sans", sans-serif; }
